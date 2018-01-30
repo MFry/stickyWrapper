@@ -6,4 +6,4 @@ Using [data attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howt
 
 ## Credit
 
-Huge credit goes to Ryan Glover at [Meteor Chef](https://themeteorchef.com/) and the his [post](https://themeteorchef.com/tutorials/react-sticky-scroll).
+Huge credit goes to Ryan Glover at [Meteor Chef](https://themeteorchef.com/) and his [post](https://themeteorchef.com/tutorials/react-sticky-scroll).
