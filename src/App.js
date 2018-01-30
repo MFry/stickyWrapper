@@ -1,21 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Appbar from 'muicss/lib/react/appbar';
+import Container from 'muicss/lib/react/container';
+import Content from './Content';
 import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+const stickyStyleSetup = { height: '200vh' };
 
+const App = () => (
+  <div>
+    <Appbar>
+      <Container>
+        <img src={logo} className="App-logo" alt="logo" />
+      </Container>
+    </Appbar>
+    <header className="App App-header">
+      <h1 className="App-title">Welcome to Sample App</h1>
+    </header>
+    <Container>
+      <Content />
+    </Container>
+    <Container style={stickyStyleSetup} />
+  </div>
+);
 export default App;
