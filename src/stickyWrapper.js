@@ -6,6 +6,7 @@ export class StickySetter extends React.Component {
     const setInitialHeights = (elements) => {
       Array.prototype.forEach.call(elements, (sticky) => {
         sticky.setAttribute('data-sticky-initial', sticky.getBoundingClientRect().top);
+        sticky.setAttribute('data-sticky-left', sticky.getBoundingClientRect().left);
       });
     };
     const stickies = document.querySelectorAll('[data-sticky]');
@@ -20,13 +21,20 @@ export class StickySetter extends React.Component {
         const stickyInitial = parseInt(sticky.dataset.stickyInitial, 10);
         const stickyEnter = parseInt(sticky.dataset.stickyEnter, 10) || stickyInitial;
         const stickyExit = parseInt(sticky.dataset.stickyExit, 10) || bottom;
+        const stickyLeft = parseInt(sticky.dataset.stickyLeft, 10) || 0;
+        const keepAligned = Boolean(sticky.dataset.stickyAlign);
         const offset = sticky.dataset.stickyOffset || 0;
 
         if (top >= stickyEnter && top <= stickyExit) {
           sticky.classList.add('sticky');
-          sticky.setAttribute('style', `top:${offset};`);
+          let inlineStyle = `top:${offset};left:0;`;
+          if (keepAligned) {
+            inlineStyle = `top:${offset};left:${stickyLeft};`;
+          }
+          sticky.setAttribute('style', inlineStyle);
         } else {
           sticky.classList.remove('sticky');
+          sticky.setAttribute('style', '');
         }
       });
     });
@@ -37,11 +45,12 @@ export class StickySetter extends React.Component {
 }
 
 const Sticky = ({
-  className, enter, exit, children, offset,
+  className, enter, exit, children, offset, keepAligned,
 }) => (
   <div
-    className={`sticky ${className}`}
+    className={`Sticky ${className}`}
     data-sticky
+    data-sticky-align={keepAligned}
     data-sticky-offset={offset}
     data-sticky-enter={enter}
     data-sticky-exit={exit}
@@ -54,12 +63,14 @@ Sticky.defaultProps = {
   enter: '',
   exit: '',
   offset: '',
+  keepAligned: true,
 };
 Sticky.propTypes = {
   className: PropTypes.string,
   enter: PropTypes.string,
   exit: PropTypes.string,
   offset: PropTypes.string,
+  keepAligned: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };
 export default Sticky;
