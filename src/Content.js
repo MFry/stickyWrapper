@@ -2,6 +2,7 @@ import React from 'react';
 import Row from 'muicss/lib/react/row';
 import Col from 'muicss/lib/react/col';
 import Button from 'muicss/lib/react/button';
+import Sticky from './stickyWrapper';
 
 const Content = () => (
   <Row>
@@ -22,7 +23,7 @@ const Content = () => (
     </Col>
     <Col md="6">
       <p> The colums are 12 based </p>
-      <Button color="primary">Button</Button>
+      <Sticky><Button color="primary">Button</Button></Sticky>
     </Col>
   </Row>
 );

@@ -4,6 +4,7 @@ import Container from 'muicss/lib/react/container';
 import Content from './Content';
 import logo from './logo.svg';
 import './App.css';
+import { StickySetter } from './stickyWrapper';
 
 const stickyStyleSetup = { height: '200vh' };
 
@@ -21,6 +22,7 @@ const App = () => (
       <Content />
     </Container>
     <Container style={stickyStyleSetup} />
+    <StickySetter />
   </div>
 );
 export default App;
