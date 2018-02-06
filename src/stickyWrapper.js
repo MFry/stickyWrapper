@@ -31,6 +31,9 @@ export class StickySetter extends React.Component {
       });
     });
   }
+  render() {
+    return <div />;
+  }
 }
 
 const Sticky = ({
