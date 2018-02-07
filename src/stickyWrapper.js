@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './StickyComponent.css';
 
 export class StickySetter extends React.Component {
   componentDidMount() {
